@@ -61,8 +61,10 @@ function letterInput(e) {
         if (state < 5) {
             state++
             drawing.setAttribute("src", piggy[state])
-            // function to 'lose' screen
-        } 
+        } else {
+            console.log("You lost!");
+            // redirect to 'lose' screen
+        }
     } else {
         e.style.backgroundColor = "green";
         // more actions to develop
