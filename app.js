@@ -49,7 +49,7 @@ function startGame() {
 
 function selectWord(array) {
     const randomPos = Math.floor(Math.random() * array.length);
-    wordToGuess = array[randomPos];
+    wordToGuess = array[randomPos].toUpperCase();
 }
 
 
