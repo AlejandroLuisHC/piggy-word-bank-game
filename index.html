@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
     <link rel="stylesheet" href="style.css">
-    <script src="/components/user-manager.js" defer></script>
+    <script src="/components/game-database.js" defer></script>
     <script src="/components/game.js" defer></script>
     <script src="app.js" defer></script>
 </head>
@@ -18,7 +18,7 @@
                 <h2 class="title-user">Choose a user name</h2>
                 <form id="form">
                     <label for="username">User name:</label>
-                    <input type="text" id="username" maxlength="15" placeholder="Your user name...">
+                    <input type="text" id="username" maxlength="15" placeholder="Your user name..." required>
                     <input id="submitBtn" class="user-submit" type="submit" value="Start">
                 </form>
             </div>

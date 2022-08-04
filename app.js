@@ -12,4 +12,66 @@ const
     rank4               = document.getElementById("rank4"),
     rank5               = document.getElementById("rank5");
 
-    
+
+
+    // Starting the game function 
+
+submitBtn.onclick =()=> {
+    if (form.checkValidity()) {
+        console.log(username.value);
+        setPlayer(username.value);
+        startGame();
+    } else {
+        const warning = document.createElement('span');
+        warning.textContent = "You need to write a valid username";
+        warning.style.color = "red";
+        if (form.childElementCount < 4) {
+            form.insertBefore(warning, submitBtn)
+        }
+    }
+}
+
+function setPlayer(name) {
+    playerInfo.name = name;
+}
+
+function startGame() {
+    mainDisplay.removeChild(userAccess);
+    mainDisplay.appendChild(gameDiv);
+    gameHead.innerHTML = `<b>${playerInfo.name}</b>, guess the word!`;
+    gamePhase.innerHTML = `PHASE 1`;
+    selectWord(fourLetterWords);
+    timerOn(); // Storing starting time in game-database
+}
+
+
+    // Pick a random word from the given array of words
+
+function selectWord(array) {
+    const randomPos = Math.floor(Math.random() * array.length);
+    wordToGuess = array[randomPos];
+}
+
+
+    // Check if the letter clicked is in the word to guess 
+
+function letterInput(e) {
+    if (!wordToGuess.includes(e.textContent)) {
+        e.style.backgroundColor = "red";
+        // more actions to develop
+    } else {
+        e.style.backgroundColor = "green";
+        // more actions to develop
+    }
+}
+
+    // Timer to get score 
+
+function timerOn() {
+    startingTime = new Date();
+}
+
+function timerOff() {
+    let winningTime = (new Date() - startingTime) / (1000 * 60);
+    playerInfo.time = winningTime;
+}
