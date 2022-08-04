@@ -31,7 +31,7 @@ drawingWordDiv.style.marginTop      = "50px";
 gameDisplayDiv.appendChild(drawingWordDiv);
 
 const drawing = document.createElement('img'); // Drawing (sample)
-drawing.setAttribute("src", "assets/img/test.gif")
+drawing.setAttribute("src", piggy[state])
 drawing.setAttribute("alt", "sample")
 drawing.style.width     = "350px";
 drawing.style.height    = "350px";

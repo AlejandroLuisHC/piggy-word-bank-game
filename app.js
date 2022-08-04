@@ -58,7 +58,11 @@ function selectWord(array) {
 function letterInput(e) {
     if (!wordToGuess.includes(e.textContent)) {
         e.style.backgroundColor = "red";
-        // more actions to develop
+        if (state < 5) {
+            state++
+            drawing.setAttribute("src", piggy[state])
+            // function to 'lose' screen
+        } 
     } else {
         e.style.backgroundColor = "green";
         // more actions to develop

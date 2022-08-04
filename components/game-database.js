@@ -30,4 +30,17 @@ const fiveLetterWords = [];
 
     // Hangman drawing (Using different pictures that change as you fail??)
 
-const hangman = [] // We can store the pictures path in an array to have access easily later
+let state = 0
+
+const piggy = [
+    "assets/img/start.gif", 
+    "assets/img/1fail.gif", 
+    "assets/img/2fail.gif", 
+    "assets/img/3fail.gif", 
+    "assets/img/4fail.gif", 
+    "assets/img/lost.gif", 
+    "assets/img/win.gif",
+    "assets/img/bye.gif",
+    "assets/img/cookies.gif",
+    "assets/img/thanks.gif"
+] // We can store the pictures path in an array to have access easily later
