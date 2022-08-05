@@ -1619,7 +1619,7 @@ const fiveLetterWords = [
 
     // Hangman drawing (Using different pictures that change as you fail??)
 
-let state = 0
+let state = 0 // how many mistakes you made
 
 const piggy = [
     "assets/img/start.gif", 
