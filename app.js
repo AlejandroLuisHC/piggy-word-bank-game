@@ -67,11 +67,42 @@ function letterInput(e) {
         }
     } else {
         e.style.backgroundColor = "green";
-        // more actions to develop
+        checkCharacter(e.textContent, wordToGuess);
+        checkWin(word.textContent);
     }
 }
 
-    // Timer to get score 
+    // Check character included in a word
+
+function checkCharacter(l, w){
+    let list = []; // [1, 3, 7]
+    for( let i = 0; i < w.length; i++) {
+        if(l === w[i]) {
+            list.push(i);
+            displayLetter(word.textContent, i, l);
+        }
+    }
+}
+
+    // Display on screen the guessed letter
+
+function displayLetter(dis, pos, let) {
+    let x = Array.from(dis);
+    x[pos] = let;
+    x = x.join('');
+    word.textContent = x;
+}
+
+    // Check if you have all the letters
+
+function checkWin(dis) {
+    if(word.textContent.indexOf("_") < 0) {
+        // Insert winning screen
+        console.log("You won!");
+    }
+}
+
+    // Timer to get score
 
 function timerOn() {
     startingTime = new Date();
