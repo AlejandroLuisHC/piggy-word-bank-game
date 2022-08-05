@@ -16,9 +16,9 @@ score = 40;
 
 if (score < 50) {
     mainDisplay.appendChild(loseDiv);
-    } else {
+} else {
     mainDisplay.appendChild(winDiv);
-    }
+}
 
 /*WIN*/
 const userID = document.createElement("h2");
