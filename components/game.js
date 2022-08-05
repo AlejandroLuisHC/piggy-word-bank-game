@@ -31,8 +31,8 @@ drawingWordDiv.style.marginTop      = "50px";
 gameDisplayDiv.appendChild(drawingWordDiv);
 
 const drawing = document.createElement('img'); // Drawing (sample)
-drawing.setAttribute("src", piggy[state])
-drawing.setAttribute("alt", "piggy")
+drawing.setAttribute("src", piggy[state]);
+drawing.setAttribute("alt", "piggy");
 drawing.style.width     = "350px";
 drawing.style.height    = "350px";
 drawingWordDiv.appendChild(drawing);
@@ -79,5 +79,3 @@ keyboard.innerHTML = `
     <button id="m" onclick="letterInput(this)">M</button>
 `
 gameDiv.appendChild(keyboard);
-
-

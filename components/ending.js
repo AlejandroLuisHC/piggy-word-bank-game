@@ -11,18 +11,8 @@ loseDiv.style.justifyContent = "center";
 loseDiv.style.alignItems = "center";
 
 
-let score = document.createElement("h1");
-score = 40;
-
-if (score < 50) {
-    mainDisplay.appendChild(loseDiv);
-} else {
-    mainDisplay.appendChild(winDiv);
-}
-
 /*WIN*/
 const userID = document.createElement("h2");
-userID.textContent = `${playerInfo.name}`;
 userID.style.fontSize = "42px";
 userID.style.color = "black";
 userID.style.margin = "10px";
@@ -36,7 +26,6 @@ userWin.style.margin = "10px";
 winDiv.appendChild(userWin);
 
 const finishSeconds = document.createElement("h2");
-finishSeconds.textContent = `You finished in ${playerInfo.time} seconds`;
 finishSeconds.style.color = "black";
 finishSeconds.style.margin = "10px";
 winDiv.appendChild(finishSeconds);
@@ -51,6 +40,7 @@ buttonWin.style.width = "300px";
 buttonWin.style.margin = "10px";
 buttonWin.style.height = "40px";
 buttonWin.style.borderRadius = "3px";
+buttonWin.onclick = () => playAgain();
 winDiv.appendChild(buttonWin);
 
 const changeUserWin = document.createElement("button");
@@ -63,6 +53,7 @@ changeUserWin.style.width = "300px";
 changeUserWin.style.margin = "10px";
 changeUserWin.style.height = "40px";
 changeUserWin.style.borderRadius = "3px";
+changeUserWin.onclick =()=> location.reload();
 winDiv.appendChild(changeUserWin);
 
 const winImg = document.createElement("img");
@@ -74,7 +65,6 @@ winDiv.appendChild(winImg);
 /* loser */
 
 const loseID = document.createElement("h2");
-loseID.textContent = `${playerInfo.name}`;
 loseID.style.fontSize = "42px";
 loseID.style.color = "black";
 loseID.style.margin = "10px";
@@ -103,20 +93,23 @@ buttonLose.style.width = "300px";
 buttonLose.style.margin = "10px";
 buttonLose.style.height = "40px";
 buttonLose.style.borderRadius = "3px";
+buttonLose.onclick = () => playAgain();
 loseDiv.appendChild(buttonLose);
 
 
-const changeUse = document.createElement("button");
-changeUse.textContent = "Change user";
-changeUse.style.backgroundColor = "black";
-changeUse.style.color = "white";
-changeUse.style.fontSize = "25px";
-changeUse.style.cursor = "pointer"
-changeUse.style.width = "300px";
-changeUse.style.margin = "10px";
-changeUse.style.height = "40px";
-changeUse.style.borderRadius = "3px";
-loseDiv.appendChild(changeUse);
+const changeUserLose = document.createElement("button");
+changeUserLose.textContent = "Change user";
+changeUserLose.style.backgroundColor = "black";
+changeUserLose.style.color = "white";
+changeUserLose.style.fontSize = "25px";
+changeUserLose.style.cursor = "pointer"
+changeUserLose.style.width = "300px";
+changeUserLose.style.margin = "10px";
+changeUserLose.style.height = "40px";
+changeUserLose.style.borderRadius = "3px";
+changeUserLose.onclick =()=> location.reload();
+
+loseDiv.appendChild(changeUserLose);
 
 const loseImg = document.createElement("img");
 loseImg.src = "/assets/img/bye.gif";

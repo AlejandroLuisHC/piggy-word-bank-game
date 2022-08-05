@@ -19,6 +19,25 @@ let startingTime = 0
 let wordToGuess = "";
 
 
+    // Hangman drawing (Using different pictures that change as you fail??)
+
+let state = 0 // how many mistakes you made
+
+const piggy = [
+    "assets/img/start.gif", 
+    "assets/img/1fail.gif", 
+    "assets/img/2fail.gif", 
+    "assets/img/3fail.gif", 
+    "assets/img/4fail.gif", 
+    "assets/img/lost.gif", 
+    "assets/img/win.gif",
+    "assets/img/bye.gif",
+    "assets/img/cookies.gif",
+    "assets/img/thanks.gif"
+    ] // We can store the pictures path in an array to have access easily later
+
+
+
     // Set of words length 4 letters
 
 const fourLetterWords = [
@@ -1617,19 +1636,3 @@ const fiveLetterWords = [
     'drill'
 ];
 
-    // Hangman drawing (Using different pictures that change as you fail??)
-
-let state = 0 // how many mistakes you made
-
-const piggy = [
-    "assets/img/start.gif", 
-    "assets/img/1fail.gif", 
-    "assets/img/2fail.gif", 
-    "assets/img/3fail.gif", 
-    "assets/img/4fail.gif", 
-    "assets/img/lost.gif", 
-    "assets/img/win.gif",
-    "assets/img/bye.gif",
-    "assets/img/cookies.gif",
-    "assets/img/thanks.gif"
-] // We can store the pictures path in an array to have access easily later

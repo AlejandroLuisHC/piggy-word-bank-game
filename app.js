@@ -62,7 +62,9 @@ function letterInput(e) {
             drawing.setAttribute("src", piggy[state])
         } else {
             console.log("You lost!");
-            // redirect to 'lose' screen
+            loseID.textContent = `${playerInfo.name}, the word was ${wordToGuess}`;
+            mainDisplay.removeChild(gameDiv);
+            mainDisplay.appendChild(loseDiv);
         }
     } else {
         e.style.backgroundColor = "green";
@@ -100,9 +102,39 @@ function checkWin(dis) {
     if(word.textContent.indexOf("_") < 0) {
         // Insert winning screen
         console.log("You won!");
+        timerOff();
+        userID.innerHTML= `${playerInfo.name}, congratulations! <br> The word was ${wordToGuess}`;
+        finishSeconds.textContent = `You finished in ${playerInfo.time} seconds`;
+        mainDisplay.removeChild(gameDiv);
+        mainDisplay.appendChild(winDiv);
+
     }
 }
 
+    // Play again function
+
+function playAgain() {
+    if (mainDisplay.firstChild === winDiv) {
+        mainDisplay.removeChild(winDiv);
+    } else {
+        mainDisplay.removeChild(loseDiv);
+    }
+    startAgain();
+}
+
+function startAgain() {
+    selectWord(fourLetterWords);
+    timerOn();
+    word.textContent = "____";
+    state = 0;
+    drawing.setAttribute("src", piggy[state]);
+    mainDisplay.appendChild(gameDiv);
+    const keyboardBtns = document.querySelectorAll(".keyboard button");
+    keyboardBtns.forEach((btn) => {
+        btn.style.backgroundColor = "black";
+    });
+
+}
     // Timer to get score 
 
 function timerOn() {
@@ -110,6 +142,7 @@ function timerOn() {
 }
 
 function timerOff() {
-    let winningTime = (new Date() - startingTime) / (1000 * 60);
-    playerInfo.time = winningTime;
+    let winningTime = (new Date() - startingTime) / (1000);
+    playerInfo.time = Math.round(winningTime * 10) / 10;
 }
+
