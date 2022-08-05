@@ -18,7 +18,6 @@ const
 
 submitBtn.onclick =()=> {
     if (form.checkValidity()) {
-        console.log(username.value);
         setPlayer(username.value);
         startGame();
     } else {
@@ -70,6 +69,7 @@ function letterInput(e) {
         // more actions to develop
     }
 }
+
 
     // Timer to get score 
 
