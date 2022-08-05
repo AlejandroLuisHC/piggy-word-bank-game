@@ -70,7 +70,6 @@ function letterInput(e) {
     }
 }
 
-
     // Timer to get score 
 
 function timerOn() {
