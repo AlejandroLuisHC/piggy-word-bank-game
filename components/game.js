@@ -32,7 +32,7 @@ gameDisplayDiv.appendChild(drawingWordDiv);
 
 const drawing = document.createElement('img'); // Drawing (sample)
 drawing.setAttribute("src", piggy[state])
-drawing.setAttribute("alt", "sample")
+drawing.setAttribute("alt", "piggy")
 drawing.style.width     = "350px";
 drawing.style.height    = "350px";
 drawingWordDiv.appendChild(drawing);
