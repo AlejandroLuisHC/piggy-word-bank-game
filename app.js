@@ -115,7 +115,7 @@ function letterInput(e) {
     if (!wordToGuess.includes(e.textContent)) {
         if (e.style.backgroundColor !== "red") { // Avoid clicking same mistake
             e.style.backgroundColor = "red";
-            if (state < 5) {
+            if (state < 10) {
                 state++
                 drawing.setAttribute("src", piggy[state])
             } else {

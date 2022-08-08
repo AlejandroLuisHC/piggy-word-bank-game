@@ -27,10 +27,16 @@ let state = 0 // how many mistakes you made
 
 const piggy = [
     "assets/img/start.gif", 
+    "assets/img/start.gif", 
+    "assets/img/1fail.gif", 
     "assets/img/1fail.gif", 
     "assets/img/2fail.gif", 
+    "assets/img/2fail.gif", 
+    "assets/img/3fail.gif", 
     "assets/img/3fail.gif", 
     "assets/img/4fail.gif", 
+    "assets/img/4fail.gif", 
+    "assets/img/lost.gif", 
     "assets/img/lost.gif", 
     "assets/img/win.gif",
     "assets/img/bye.gif",
