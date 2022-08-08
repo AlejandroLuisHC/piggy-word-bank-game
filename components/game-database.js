@@ -1,7 +1,9 @@
     // Local storage database
 
 let myStorage = window.localStorage;
-myStorage = [];
+let gamePlayers = {
+    players: []
+}
 
     // Current player info that will be stored afterwards
 

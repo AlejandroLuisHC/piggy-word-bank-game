@@ -30,6 +30,63 @@ submitBtn.onclick =()=> {
     }
 }
 
+
+    // Generate the ranking 
+
+window.onload = setRank();
+function setRank() {
+    let top5Time = [];
+    let top5Name = [];
+    if (myStorage.getItem("gamePlayers") !== null) {
+        
+        // Select from the data the best 5 scores
+        gamePlayers = JSON.parse(myStorage.getItem("gamePlayers"));
+        for (let i = 0; i <= gamePlayers.players.length; i++) {
+            if ((i % 2 !== 0) && (i < 10)) {
+                top5Time.push(gamePlayers.players[i]);
+                top5Name.push(gamePlayers.players[i - 1])
+            } else if (i % 2 !== 0) {
+                for (let y = top5Time.length; y >= 0; y--) {
+                    if (top5Time[y] > gamePlayers.players[i]) {
+                        top5Time[y] = gamePlayers.players[i];
+                        top5Name[y] = gamePlayers.players[i - 1];
+                        break;
+                    };
+                };
+            };
+            
+            // Sort best 5 scores order.
+            let tempTime = 0;
+            let tempName = '';
+            for (let x = 0; x < top5Time.length; x++) {
+                for(let xi = x; xi < top5Time.length; xi++) {
+                    if (top5Time[xi] < top5Time[x]) {
+                        tempTime = top5Time[xi];
+                        tempName = top5Name[xi];
+                        top5Time[xi] = top5Time [x];
+                        top5Name[xi] = top5Name [x];
+                        top5Time[x] = tempTime;
+                        top5Name[x] = tempName;
+                    };
+                };
+            };
+        };
+        
+        // Create the list elements to display scores
+        for (let z = 0; z < top5Name.length; z++) {
+            let rank = document.createElement('li');
+            rank.textContent = `${top5Name[z]} -- ${top5Time[z]} seconds`
+            topRank.appendChild(rank);
+        };
+    } else {
+        let rank = document.createElement('span');
+        rank.textContent = `No scores to display yet!`
+        rank.style.fontSize = '35px';
+        rank.style.color = 'red';
+        topRank.appendChild(rank);
+    };
+}
+
 function setPlayer(name) {
     playerInfo.name = name;
 }
@@ -56,19 +113,20 @@ function selectWord(array) {
 
 function letterInput(e) {
     if (!wordToGuess.includes(e.textContent)) {
-        e.style.backgroundColor = "red";
-        if (state < 5) {
-            state++
-            drawing.setAttribute("src", piggy[state])
-        } else {
-            console.log("You lost!");
-            loseID.textContent = `${playerInfo.name}, the word was ${wordToGuess}`;
-            mainDisplay.removeChild(gameDiv);
-            mainDisplay.appendChild(loseDiv);
-        }
+        if (e.style.backgroundColor !== "red") { // Avoid clicking same mistake
+            e.style.backgroundColor = "red";
+            if (state < 5) {
+                state++
+                drawing.setAttribute("src", piggy[state])
+            } else {
+                console.log("You lost!");
+                loseID.textContent = `${playerInfo.name}, the word was ${wordToGuess}`;
+                mainDisplay.removeChild(gameDiv);
+                mainDisplay.appendChild(loseDiv);
+            };
+        };
     } else {
         e.style.backgroundColor = "green";
-        // more actions to develop
         checkCharacter(e.textContent, wordToGuess);
         checkWin(word.textContent);
     }
@@ -100,21 +158,42 @@ function displayLetter(dis, pos, let) {
 
 function checkWin(dis) {
     if(word.textContent.indexOf("_") < 0) {
-        // Insert winning screen
         console.log("You won!");
         timerOff();
+        while (topRank.lastChild) {
+            topRank.removeChild(topRank.lastChild)
+        };
+        storeLocal(playerInfo.name, playerInfo.time);
         userID.innerHTML= `${playerInfo.name}, congratulations! <br> The word was ${wordToGuess}`;
         finishSeconds.textContent = `You finished in ${playerInfo.time} seconds`;
         mainDisplay.removeChild(gameDiv);
         mainDisplay.appendChild(winDiv);
+        setRank();
 
-    }
+    };
 }
+
+    // Save information into local storage when winning
+
+function storeLocal(name, time) {
+    myStorage.clear();
+    if (gamePlayers.players.indexOf(name) < 0) {
+        gamePlayers.players.push(name);
+        gamePlayers.players.push(time);
+    } else {
+        let playerIndex = gamePlayers.players.indexOf(name);
+        if (gamePlayers.players[playerIndex + 1] > time) {
+            gamePlayers.players[playerIndex + 1] = time;
+        };
+    };
+    myStorage.setItem("gamePlayers", JSON.stringify(gamePlayers));
+}
+
 
     // Play again function
 
 function playAgain() {
-    if (mainDisplay.firstChild === winDiv) {
+    if (mainDisplay.contains(winDiv)) {
         mainDisplay.removeChild(winDiv);
     } else {
         mainDisplay.removeChild(loseDiv);
@@ -145,4 +224,3 @@ function timerOff() {
     let winningTime = (new Date() - startingTime) / (1000);
     playerInfo.time = Math.round(winningTime * 10) / 10;
 }
-
