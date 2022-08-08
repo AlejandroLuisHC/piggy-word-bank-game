@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hangman Game</title>
+    <title>Welcome to Piggy Word Bank</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/piggy.ico">
     <link rel="stylesheet" href="style.css">
     <script src="/components/game-database.js" defer></script>
     <script src="/components/game.js" defer></script>
@@ -13,7 +14,7 @@
 </head>
 <body> 
     <main>
-        <h1 class="title">Welcome to The Hanging Man</h1>
+        <h1 class="title">Welcome to Piggy Word Bank</h1>
         <div id="mainDisplay" class="main-display">
             <div id="userAccess" class="user-access">
                 <h2 class="title-user">Choose a user name</h2>
@@ -22,16 +23,13 @@
                     <input type="text" id="username" maxlength="15" placeholder="Your user name..." required>
                     <input id="submitBtn" class="user-submit" type="submit" value="Start">
                 </form>
+                <img class="background-piggy" src="assets\img\cookies.gif" alt="Chillin' piggy">
             </div>
         </div>
         <div id="rankingDisplay" class="ranking-display">
             <h1 class="ranking-title">Top scores:</h1>
             <ol id="topRank">
-                <li id="rank1"></li>
-                <li id="rank2"></li>
-                <li id="rank3"></li>
-                <li id="rank4"></li>
-                <li id="rank5"></li>
+
             </ol>
         </div>
     </main>
