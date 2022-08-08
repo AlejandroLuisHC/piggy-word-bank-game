@@ -21,8 +21,8 @@ submitBtn.onclick =()=> {
         warning.style.color = "red";
         if (form.childElementCount < 4) {
             form.insertBefore(warning, submitBtn)
-        }
-    }
+        };
+    };
 }
 
 
@@ -112,8 +112,8 @@ function letterInput(e) {
         if (e.style.backgroundColor !== "red") { // Avoid clicking same mistake
             e.style.backgroundColor = "red";
             if (state < 10) {
-                state++
-                drawing.setAttribute("src", piggy[state])
+                state++;
+                drawing.setAttribute("src", piggy[state]);
             } else {
                 console.log("You lost!");
                 loseID.textContent = `${playerInfo.name}, the word was ${wordToGuess}`;
@@ -125,20 +125,20 @@ function letterInput(e) {
         e.style.backgroundColor = "green";
         checkCharacter(e.textContent, wordToGuess);
         checkWin(word.textContent);
-    }
+    };
 }
 
     // Timer to get score 
     // Check character included in a word
 
 function checkCharacter(l, w){
-    let list = []; // [1, 3, 7]
+    let list = [];
     for( let i = 0; i < w.length; i++) {
         if(l === w[i]) {
             list.push(i);
             displayLetter(word.textContent, i, l);
-        }
-    }
+        };
+    };
 }
 
     // Display on screen the guessed letter
@@ -170,7 +170,7 @@ function checkWin(dis) {
             console.log("You won!");
             timerOff();
             while (topRank.lastChild) {
-                topRank.removeChild(topRank.lastChild)
+                topRank.removeChild(topRank.lastChild);
             };
             storeLocal(playerInfo.name, playerInfo.time);
             userID.innerHTML= `${playerInfo.name}, congratulations! <br> The word was ${wordToGuess}`;
@@ -227,8 +227,9 @@ function startAgain() {
     keyboardBtns.forEach((btn) => {
         btn.style.backgroundColor = "black";
     });
-
 }
+    
+
     // Timer to get score 
 
 function timerOn() {
@@ -245,32 +246,32 @@ function timerOff() {
 
 window.addEventListener("keydown", (ele) => {
     const
-    q                   = document.getElementById("q"),
-    w                   = document.getElementById("w"),
-    e                   = document.getElementById("e"),
-    r                   = document.getElementById("r"),
-    t                   = document.getElementById("t"),
-    y                   = document.getElementById("y"),
-    u                   = document.getElementById("u"),
-    i                   = document.getElementById("i"),
-    o                   = document.getElementById("o"),
-    p                   = document.getElementById("p"),
-    a                   = document.getElementById("a"),
-    s                   = document.getElementById("s"),
-    d                   = document.getElementById("d"),
-    f                   = document.getElementById("f"),
-    g                   = document.getElementById("g"),
-    h                   = document.getElementById("h"),
-    j                   = document.getElementById("j"),
-    k                   = document.getElementById("k"),
-    l                   = document.getElementById("l"),
-    z                   = document.getElementById("z"),
-    x                   = document.getElementById("x"),
-    c                   = document.getElementById("c"),
-    v                   = document.getElementById("v"),
-    b                   = document.getElementById("b"),
-    n                   = document.getElementById("n"),
-    m                   = document.getElementById("m");
+    q = document.getElementById("q"),
+    w = document.getElementById("w"),
+    e = document.getElementById("e"),
+    r = document.getElementById("r"),
+    t = document.getElementById("t"),
+    y = document.getElementById("y"),
+    u = document.getElementById("u"),
+    i = document.getElementById("i"),
+    o = document.getElementById("o"),
+    p = document.getElementById("p"),
+    a = document.getElementById("a"),
+    s = document.getElementById("s"),
+    d = document.getElementById("d"),
+    f = document.getElementById("f"),
+    g = document.getElementById("g"),
+    h = document.getElementById("h"),
+    j = document.getElementById("j"),
+    k = document.getElementById("k"),
+    l = document.getElementById("l"),
+    z = document.getElementById("z"),
+    x = document.getElementById("x"),
+    c = document.getElementById("c"),
+    v = document.getElementById("v"),
+    b = document.getElementById("b"),
+    n = document.getElementById("n"),
+    m = document.getElementById("m");
 
     if (ele.key === "q") {
         q.click();
@@ -324,5 +325,5 @@ window.addEventListener("keydown", (ele) => {
         n.click();
     } else if (ele.key === "m") {
         m.click();
-    }
-});
+    };
+})
