@@ -80,6 +80,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 150px;
 }
 
 .user-access form {
@@ -126,6 +127,19 @@ main {
 .user-submit:hover {
     animation: none;
     transform: scale(1.1);
+}
+
+.background-piggy {
+    position: absolute;
+    transform: scale(.6);
+    right: 5%;
+    top: 480px;
+}
+
+@media screen and (max-width: 450px) {
+    .background-piggy {
+        left: 0px;
+    }
 }
 
 /* GAME
