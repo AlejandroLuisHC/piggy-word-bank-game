@@ -5,12 +5,7 @@ const
     username            = document.getElementById("username"),
     submitBtn           = document.getElementById("submitBtn"),
     rankingDisplay      = document.getElementById("rankingDisplay"),
-    topRank             = document.getElementById("topRank"),
-    rank1               = document.getElementById("rank1"),
-    rank2               = document.getElementById("rank2"),
-    rank3               = document.getElementById("rank3"),
-    rank4               = document.getElementById("rank4"),
-    rank5               = document.getElementById("rank5");
+    topRank             = document.getElementById("topRank");
 
 
 
@@ -244,3 +239,90 @@ function timerOff() {
     let winningTime = (new Date() - startingTime) / (1000);
     playerInfo.time = Math.round(winningTime * 10) / 10;
 }
+
+
+    // Keyboard detection
+
+window.addEventListener("keydown", (ele) => {
+    const
+    q                   = document.getElementById("q"),
+    w                   = document.getElementById("w"),
+    e                   = document.getElementById("e"),
+    r                   = document.getElementById("r"),
+    t                   = document.getElementById("t"),
+    y                   = document.getElementById("y"),
+    u                   = document.getElementById("u"),
+    i                   = document.getElementById("i"),
+    o                   = document.getElementById("o"),
+    p                   = document.getElementById("p"),
+    a                   = document.getElementById("a"),
+    s                   = document.getElementById("s"),
+    d                   = document.getElementById("d"),
+    f                   = document.getElementById("f"),
+    g                   = document.getElementById("g"),
+    h                   = document.getElementById("h"),
+    j                   = document.getElementById("j"),
+    k                   = document.getElementById("k"),
+    l                   = document.getElementById("l"),
+    z                   = document.getElementById("z"),
+    x                   = document.getElementById("x"),
+    c                   = document.getElementById("c"),
+    v                   = document.getElementById("v"),
+    b                   = document.getElementById("b"),
+    n                   = document.getElementById("n"),
+    m                   = document.getElementById("m");
+
+    if (ele.key === "q") {
+        q.click();
+    } else if (ele.key === "w") {
+        w.click();
+    } else if (ele.key === "e") {
+        e.click();
+    } else if (ele.key === "r") {
+        r.click();
+    } else if (ele.key === "t") {
+        t.click();
+    } else if (ele.key === "y") {
+        y.click();
+    } else if (ele.key === "u") {
+        u.click();
+    } else if (ele.key === "i") {
+        i.click();
+    } else if (ele.key === "o") {
+        o.click();
+    } else if (ele.key === "p") {
+        p.click();
+    } else if (ele.key === "a") {
+        a.click();
+    } else if (ele.key === "s") {
+        s.click();
+    } else if (ele.key === "d") {
+        d.click();
+    } else if (ele.key === "f") {
+        f.click();
+    } else if (ele.key === "g") {
+        g.click();
+    } else if (ele.key === "h") {
+        h.click();
+    } else if (ele.key === "j") {
+        j.click();
+    } else if (ele.key === "k") {
+        k.click();
+    } else if (ele.key === "l") {
+        l.click();
+    } else if (ele.key === "z") {
+        z.click();
+    } else if (ele.key === "x") {
+        x.click();
+    } else if (ele.key === "c") {
+        c.click();
+    } else if (ele.key === "v") {
+        v.click();
+    } else if (ele.key === "b") {
+        b.click();
+    } else if (ele.key === "n") {
+        n.click();
+    } else if (ele.key === "m") {
+        m.click();
+    }
+});
