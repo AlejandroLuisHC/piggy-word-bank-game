@@ -163,6 +163,7 @@ function checkWin(dis) {
             gameHead.innerHTML = `Well done, <b>${playerInfo.name}</b>! The word was <b>${wordToGuess}</b><br>Guess the new word`;
             selectWord (fiveLetterWords);
             word.textContent = "_____";
+            drawingWordDiv.style.marginTop = "18px";
             gamePhase.innerHTML = `PHASE 2`;
             state = 0;
             drawing.setAttribute("src", piggy[state]);
@@ -209,10 +210,12 @@ function playAgain() {
     if (mainDisplay.contains(winDiv)) {
         mainDisplay.removeChild(winDiv);
         gameHead.innerHTML = `<b>${playerInfo.name}</b>, guess the word!`;
+        drawingWordDiv.style.marginTop = "50px";
         gamePhase.innerHTML = `PHASE 1`;
     } else {
         mainDisplay.removeChild(loseDiv);
         gameHead.innerHTML = `<b>${playerInfo.name}</b>, guess the word!`;
+        drawingWordDiv.style.marginTop = "50px";
         gamePhase.innerHTML = `PHASE 1`;
     }
     startAgain();
