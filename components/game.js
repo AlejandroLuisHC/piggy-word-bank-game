@@ -40,7 +40,6 @@ drawingWordDiv.appendChild(drawing);
 const word = document.createElement('span'); // Word box
 word.style.fontSize      = "90px";
 word.style.letterSpacing = "20px";
-word.textContent         = "____";
 drawingWordDiv.appendChild(word);
 
 const keyboard = document.createElement('div');

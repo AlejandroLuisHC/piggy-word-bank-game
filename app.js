@@ -19,7 +19,7 @@ const
 submitBtn.onclick =()=> {
     if (form.checkValidity()) {
         setPlayer(username.value);
-        startGame();
+        startGame(fourLetterWords);
     } else {
         const warning = document.createElement('span');
         warning.textContent = "You need to write a valid username";
@@ -91,12 +91,13 @@ function setPlayer(name) {
     playerInfo.name = name;
 }
 
-function startGame() {
+function startGame(xLetterWords) {
     mainDisplay.removeChild(userAccess);
     mainDisplay.appendChild(gameDiv);
+    word.textContent = "____";
     gameHead.innerHTML = `<b>${playerInfo.name}</b>, guess the word!`;
     gamePhase.innerHTML = `PHASE 1`;
-    selectWord(fourLetterWords);
+    selectWord(xLetterWords);
     timerOn(); // Storing starting time in game-database
 }
 
@@ -158,19 +159,31 @@ function displayLetter(dis, pos, let) {
 
 function checkWin(dis) {
     if(word.textContent.indexOf("_") < 0) {
-        console.log("You won!");
-        timerOff();
-        while (topRank.lastChild) {
-            topRank.removeChild(topRank.lastChild)
-        };
-        storeLocal(playerInfo.name, playerInfo.time);
-        userID.innerHTML= `${playerInfo.name}, congratulations! <br> The word was ${wordToGuess}`;
-        finishSeconds.textContent = `You finished in ${playerInfo.time} seconds`;
-        mainDisplay.removeChild(gameDiv);
-        mainDisplay.appendChild(winDiv);
-        setRank();
-
-    };
+        if(word.textContent.length === 4){
+            gameHead.innerHTML = `Well done, <b>${playerInfo.name}</b>! The word was <b>${wordToGuess}</b><br>Guess the new word`;
+            selectWord (fiveLetterWords);
+            word.textContent = "_____";
+            gamePhase.innerHTML = `PHASE 2`;
+            state = 0;
+            drawing.setAttribute("src", piggy[state]);
+            const keyboardBtns = document.querySelectorAll(".keyboard button");
+            keyboardBtns.forEach((btn) => {
+            btn.style.backgroundColor = "black";
+            });
+        }else {
+            console.log("You won!");
+            timerOff();
+            while (topRank.lastChild) {
+                topRank.removeChild(topRank.lastChild)
+            };
+            storeLocal(playerInfo.name, playerInfo.time);
+            userID.innerHTML= `${playerInfo.name}, congratulations! <br> The word was ${wordToGuess}`;
+            finishSeconds.textContent = `You finished in ${playerInfo.time} seconds`;
+            mainDisplay.removeChild(gameDiv);
+            mainDisplay.appendChild(winDiv);
+            setRank();
+        }
+    }
 }
 
     // Save information into local storage when winning
@@ -195,8 +208,12 @@ function storeLocal(name, time) {
 function playAgain() {
     if (mainDisplay.contains(winDiv)) {
         mainDisplay.removeChild(winDiv);
+        gameHead.innerHTML = `<b>${playerInfo.name}</b>, guess the word!`;
+        gamePhase.innerHTML = `PHASE 1`;
     } else {
         mainDisplay.removeChild(loseDiv);
+        gameHead.innerHTML = `<b>${playerInfo.name}</b>, guess the word!`;
+        gamePhase.innerHTML = `PHASE 1`;
     }
     startAgain();
 }
